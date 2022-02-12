@@ -20,6 +20,18 @@ const PORT = process.env.PORT;
 /* we will import the connection for mongodb file here  */
 require("./db/conn.js");
 
+//middleware use
+app.use(express.json());
+
+//now we will link routes with main file
+//how to link using app.use(require(path))
+
+app.use(require("./routes/auth"));
+
+//now here we will need model
+const User = require("./model/userSchema");
+const { json } = require("express");
+
 //middleware --is used for user authentication
 
 const middleware = (req, res, next) => {
